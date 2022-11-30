@@ -10,6 +10,7 @@ import { INews } from "../../interfaces/new";
 export class NewsComponent implements OnInit {
 
   news: INews[] | null = null;
+  trentNews: INews | null = null
 
   constructor(private ApiService:ApiService) { }
 
@@ -19,6 +20,7 @@ export class NewsComponent implements OnInit {
     this.ApiService.loadNews().subscribe({
       next(value) {
         me.news = value['feed'];
+        me.trentNews = value['feed'][0];
         console.log(me.news);
         
       },

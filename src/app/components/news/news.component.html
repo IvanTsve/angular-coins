@@ -1,53 +1,23 @@
 <div *ngIf="news" class="container">
-    <ul>
-        <li *ngFor="let n of news key let i=index">
-            <h2>{{n['title']}}</h2>
-            <p>{{n["summary"]}}</p>
-            <p>By <strong *ngFor="let author of n.authors">{{author}} </strong></p>
-        </li>
-
-
-
-        <!-- authors
-: 
-['Chris Katje']
-banner_image
-: 
-"https://cdn.benzinga.com/files/images/story/2022/11/20/darren_rovell_espn.jpg?width=1200&height=800&fit=crop"
-category_within_source
-: 
-"General"
-overall_sentiment_label
-: 
-"Somewhat-Bullish"
-overall_sentiment_score
-: 
-0.150112
-source
-: 
-"Benzinga"
-source_domain
-: 
-"www.benzinga.com"
-summary
-: 
-"The battle for sports rights could be heating up with streaming companies entering the market at an increasing rate. Sports industry expert Darren Rovell shares with Benzinga thoughts on the streaming market and who could take market share away from ESPN."
-ticker_sentiment
-: 
-(4) [{…}, {…}, {…}, {…}]
-time_published
-: 
-"20221120T155203"
-title
-: 
-"EXCLUSIVE: Darren Rovell Says ESPN Should Be Worried About Streaming Companies Entering Sports, Especially This Tech Giant - Walt Disney  ( NYSE:DIS ) "
-topics
-: 
-(3) [{…}, {…}, {…}]
-url
-: 
-"https://www.benzinga.com/general/entertainment/22/11/29794210/exclusive-darren-rovell-says-espn-should-be-worried-about-streaming-companies-entering-spor" -->
-
-    </ul>
-
+    <div class="trend" >
+        <!-- todo add router link for summary -->
+        <img class="trend-img" [src]="trentNews?.banner_image" alt="banner">
+        <div class="content">
+            <h1 class="trend-title">{{trentNews?.title}}</h1>
+            <p class="trend-author">By <strong *ngFor="let author of trentNews?.authors">{{author}} </strong></p>
+        </div>
+    </div>
+    <div class="scroll-imgs-container">	
+        <div class="scroll-img-item" *ngFor="let n of news.slice(1) key let i=index">
+            <div class="scroll-img" [style]="'background: url('+n?.banner_image+');background-size: cover; background-repeat: no-repeat;background-position: center;'"></div>
+            <div class="scroll-img-texts">
+                <p class="scroll-img-title">{{n['title']}}</p>`
+                <p class="scroll-img-text">{{n["summary"]}}</p>
+                <p class="scroll-img-date">By <strong *ngFor="let author of n.authors">{{author}} </strong></p>
+                <button class="scroll-btn">
+                <a href="#">Read more</a>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
