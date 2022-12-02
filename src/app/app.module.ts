@@ -7,15 +7,17 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 
-// import { NewsComponent } from './components/news/news.component';
-// import { CurrencyComponent } from './components/currency/currency.component';
 
 import { MainModule } from "./main/main.module";
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainComponent,
+    // LoginComponent,
+    // RegisterComponent,
     
   ],
   imports: [
