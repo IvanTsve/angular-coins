@@ -10,21 +10,31 @@ import { ICrypto } from "../../interfaces/crypto";
 export class CurrencyComponent implements OnInit {
 
   cryptos: ICrypto[] | null = null;
+  // cryptos: any;
 
-  constructor(private ApiService:ApiService) { }
+  buyCoin(event: any) {
+    console.log(event.target);
+
+
+  }
+  constructor(private ApiService: ApiService) { }
+
 
   ngOnInit(): void {
     const me = this;
-    // this.ApiService.getCryptoALl().subscribe({
-    //   next(value) {
-    //     me.cryptos = value;
-    //     console.log(value);
-    //   },
-    //   error(err) {
-    //     console.log(err);
-        
-    //   }
-    // })
+
+    this.ApiService.getCryptoALl().subscribe({
+      next(value) {
+        me.cryptos = value['data']['coins'];
+        console.log(value, 11);
+      },
+      error(err) {
+        console.log(err);
+
+      }
+    })
   }
 
 }
+
+

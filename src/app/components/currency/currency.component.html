@@ -1,1 +1,12 @@
-<p>currency works!</p>
+<div *ngIf="cryptos" class="container">
+    <div *ngFor="let c of cryptos" class="coins">
+        <!-- <div class="scroll-img" [style]="'background: url('+n?.banner_image+');background-size: cover; background-repeat: no-repeat;background-position: center;'"></div> -->
+        <img [src]="c.iconUrl" alt="img" class="img" >
+        <h4>{{c.name}}</h4>
+        <p>{{c.price | number }}</p>
+        <button (click)="buyCoin($event)" class="cta-buy" [id]="c.uuid">Buy</button>
+
+
+    </div>
+
+</div>

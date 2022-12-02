@@ -30,7 +30,8 @@ export class ApiService {
 
   
   getCryptoALl() {
-    return this.HttpClient.get<ICrypto[]>(`${paths.cryptos}`,this.requestOptionsCrypto)
+    let cryptos = this.HttpClient.get<any>(`${paths.cryptos}`,this.requestOptionsCrypto);
+    return cryptos;
 
   }
 }
