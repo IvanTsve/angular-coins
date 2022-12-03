@@ -9,22 +9,21 @@ import { MainComponent } from './components/main/main.component';
 
 
 import { MainModule } from "./main/main.module";
-import { LoginComponent } from './user/login/login.component';
-import { RegisterComponent } from './user/register/register.component';
+import { NewsComponent } from './components/news/news.component';
+import { CurrencyComponent } from './components/currency/currency.component';
+// import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     MainComponent,
-    // LoginComponent,
-    // RegisterComponent,
+    HeaderComponent,
     
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     HttpClientModule,
-    MainModule
+    MainModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,23 +1,29 @@
 <div *ngIf="news" class="container">
-    <div class="trend" >
+    <div class="trend">
         <!-- todo add router link for summary -->
-        <img class="trend-img" [src]="trentNews?.banner_image" alt="banner">
-        <div class="content">
-            <h1 class="trend-title">{{trentNews?.title}}</h1>
-            <p class="trend-author">By <strong *ngFor="let author of trentNews?.authors">{{author}} </strong></p>
-        </div>
+        <a routerLink="/news/details/{{0}}3498e6f61dc6">
+            <img class="trend-img" [src]="trentNews?.banner_image" alt="banner">
+            <div class="content">
+                <h1 class="trend-title">{{trentNews?.title}}</h1>
+                <p class="trend-author">By <strong *ngFor="let author of trentNews?.authors">{{author}} </strong></p>
+            </div>
+        </a>
     </div>
-    <div class="scroll-imgs-container">	
+    <div class="scroll-imgs-container nc">
         <div class="scroll-img-item" *ngFor="let n of news.slice(1) key let i=index">
-            <div class="scroll-img" [style]="'background: url('+n?.banner_image+');background-size: cover; background-repeat: no-repeat;background-position: center;'"></div>
+            <div class="scroll-img"
+                [style]="'background: url('+n?.banner_image+');background-size: cover; background-repeat: no-repeat;background-position: center;'">
+            </div>
             <div class="scroll-img-texts">
                 <p class="scroll-img-title">{{n['title']}}</p>`
                 <p class="scroll-img-text">{{n["summary"]}}</p>
                 <p class="scroll-img-date">By <strong *ngFor="let author of n.authors">{{author}} </strong></p>
                 <button class="scroll-btn">
-                <a href="#">Read more</a>
+                    <a routerLink="/news/details/{{i+1}}3498e6f61dc6">Read more</a>
                 </button>
             </div>
         </div>
+        
     </div>
 </div>
+<router-outlet></router-outlet>
