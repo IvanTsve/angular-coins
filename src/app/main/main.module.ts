@@ -15,6 +15,7 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     AppRoutingModule,
     CommonModule,
+    
   ],
   exports: [
     CurrencyComponent,

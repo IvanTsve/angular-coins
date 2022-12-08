@@ -31,3 +31,23 @@
     color: white;
 
 }
+
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    display: none;
+
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    display: none;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: black; 
+  }

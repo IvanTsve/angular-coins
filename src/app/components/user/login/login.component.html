@@ -1,13 +1,14 @@
-<div class="form-div">
-    <form class="form form-login">
+<div class="form-div" >
+    <form class="form form-login" (ngSubmit)="loginHandler(loginForm.value)" #loginForm="ngForm">
         <h3 class="form-title">Login</h3>
         
         <label for="username">Username</label>
-        <input type="text" placeholder="Email" id="username">
+        <input type="text" placeholder="Email" id="username" ngModel name="username">
         
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
+        <input type="password" placeholder="Password" id="password" ngModel name="password">
         
         <button class="cta">Log In</button>
+        {{loginForm.value | json}}
     </form>
 </div>
