@@ -1,14 +1,23 @@
 <div class="form-div" >
+    <div *ngIf="user?.status == 'success'" style="color: green; font-weight: 900; font-size: 2rem; margin-left: 20px;">{{user?.msg}}</div>
     <form class="form form-login" (ngSubmit)="loginHandler(loginForm.value)" #loginForm="ngForm">
         <h3 class="form-title">Login</h3>
         
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email" id="username" ngModel name="username">
+        <label for="username">Email</label>
+        <input type="text" placeholder="Email" id="email" ngModel name="email">
         
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password" ngModel name="password">
         
         <button class="cta">Log In</button>
-        {{loginForm.value | json}}
+        
+        <ng-container *ngIf="err">
+            <h1 class="err-title" style="color: red; text-align: center; text-transform: uppercase;">
+                {{err.status}}
+            </h1>
+            <span class="err-msg" style="color: red; text-align: center; display: table; margin: 0 auto; text-transform: uppercase;">
+                {{err.msg}}
+            </span>
+        </ng-container>
     </form>
 </div>

@@ -1,1 +1,35 @@
-<p>details works!</p>
+<div class="profile-wrapper" *ngIf="coin">
+    <div class="profile-picture">
+        <img id="profile-picture" [src]="coin.iconUrl">
+    </div>
+    <div class="profile-details">
+        <div>
+            <div class="profile-title">
+
+                <h1 id="profile-name" class="profile-name">{{coin.symbol}}</h1>
+            </div>
+            <div [innerHTML]="coin.description"></div>
+            <ul>
+                <li class="profile-number">
+                    <div>Rank</div>
+                    <div id="profile-second-number">{{coin.rank}}</div>
+                </li>
+                <li class="profile-number">
+                    <div>Price</div>
+                    <div id="profile-first-number">{{coin.price | number}}</div>
+                </li>
+                <li class="profile-email">
+                    <div>Symbol</div>
+                    <div id="profile-primary-email">{{coin.symbol}}</div>
+                </li>
+            </ul>
+            <h3>Tags</h3>
+            <span *ngFor="let t of coin.tags"><i>{{t}}</i></span>
+        </div>
+    </div>
+</div>
+<div class='contact-action'>
+    <div class='item'>
+        <i class="fa fa-wrench"></i>
+    </div>
+</div>

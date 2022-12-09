@@ -13,13 +13,15 @@ import { MainComponent } from './components/main/main.component';
 import { MainModule } from "./main/main.module";
 import { RegisterComponent } from './components/user/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
+import { DetailsComponent } from './components/details/details.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    DetailsComponent
     
   ],
   imports: [
@@ -27,7 +29,7 @@ import { LoginComponent } from './components/user/login/login.component';
     AppRoutingModule,
     HttpClientModule,
     MainModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { ICrypto } from "../../interfaces/crypto";
-
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-currency',
   templateUrl: './currency.component.html',
@@ -12,12 +12,12 @@ export class CurrencyComponent implements OnInit {
   cryptos: ICrypto[] | null = null;
   // cryptos: any;
 
-  buyCoin(event: any) {
-    console.log(event.target);
+  watchCoin(id: any) {
+    this.router.navigate([`coins/details/${id}`])
 
 
   }
-  constructor(private ApiService: ApiService) { }
+  constructor(private ApiService: ApiService,private router: Router) { }
 
 
   ngOnInit(): void {
@@ -26,14 +26,13 @@ export class CurrencyComponent implements OnInit {
     this.ApiService.getCryptoALl().subscribe({
       next(value) {
         me.cryptos = value['data']['coins'];
-        console.log(value, 11);
       },
       error(err) {
-        console.log(err);
 
       }
     })
   }
+
 
 }
 

@@ -15,12 +15,9 @@
                 [style]="'background: url('+n?.banner_image+');background-size: cover; background-repeat: no-repeat;background-position: center;'">
             </div>
             <div class="scroll-img-texts">
-                <p class="scroll-img-title">{{n['title']}}</p>`
-                <p class="scroll-img-text">{{n["summary"]}}</p>
-                <p class="scroll-img-date">By <strong *ngFor="let author of n.authors">{{author}} </strong></p>
-                <button class="scroll-btn">
-                    <a routerLink="/news/details/{{i+1}}3498e6f61dc6">Read more</a>
-                </button>
+                <p class="scroll-img-title">{{n['title']}}</p>
+                <p class="scroll-img-text">{{n["summary"]}}....</p>
+                <!-- <p class="scroll-img-date">By <strong *ngFor="let author of n.authors">{{author}} </strong></p> -->
             </div>
         </div>
         

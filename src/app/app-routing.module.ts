@@ -9,9 +9,9 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
 const routes: Routes = [
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/register', component: RegisterComponent },
-  { path: 'main', component: MainComponent },
+  { path: '', component: MainComponent },
   { path: 'user/portfolio', component:  PortfolioComponent},
-  { path: 'news/details/:id', component: DetailsComponent },
+  { path: 'coins/details/:id', component: DetailsComponent },
 ];
 
 

@@ -34,4 +34,12 @@ export class ApiService {
     return cryptos;
 
   }
+
+  getSingleCoin(id:string) {
+
+    return this.HttpClient.get<any>(`${paths.coin}/${id}`, this.requestOptionsCrypto);
+
+  }
+
 }
+
