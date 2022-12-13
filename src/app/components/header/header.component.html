@@ -1,10 +1,15 @@
 <nav class="navigation">
     <a routerLink="/main" class="home"></a>
     <ul class="nav-ul">
-        <li><a routerLink="/">main</a></li>
-        <li><a routerLink="/user/portfolio">profile</a></li>
-        <li><a routerLink="/auth/login">Login</a></li>
-        <li><a routerLink="/auth/register">register</a></li>
+        <ng-container *ngIf="user.id">
+            <li>Hello <a routerLink="/user/portfolio">{{user.username}}</a></li>
+            <li><a routerLink="/">main</a></li>
+            <li><a routerLink="/auth/logout">logout</a></li>
+        </ng-container>
+        <ng-container *ngIf="!user.id">
+            <li><a routerLink="/auth/login">Login</a></li>
+            <li><a routerLink="/auth/register">register</a></li>
+        </ng-container>
     </ul>
 </nav>
 <!-- <router-outlet></router-outlet> -->

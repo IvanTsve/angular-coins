@@ -5,7 +5,6 @@ import { IRegisterUser } from '../interfaces/registerUser';
 import { ILoginUser } from '../interfaces/loginUser';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +13,7 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   userData: any = {};
+
   register(body: IRegisterUser) {
 
     return this.http.post(`${paths.database}/users.json`, body);
@@ -48,8 +48,13 @@ export class UsersService {
     } catch (err) {
       me.userData['status'] = '404'
       me.userData['msg'] = 'not found'
+
       return me.userData;
+
     }
+  }
+
+  getUser() {
 
   }
 }

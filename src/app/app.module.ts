@@ -14,6 +14,8 @@ import { MainModule } from "./main/main.module";
 import { RegisterComponent } from './components/user/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { DetailsComponent } from './components/details/details.component';
+import { UsersService } from './services/users.service';
+import { AuthComponent } from './components/auth/auth.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,8 +23,8 @@ import { DetailsComponent } from './components/details/details.component';
     MainComponent,
     RegisterComponent,
     LoginComponent,
-    DetailsComponent
-    
+    DetailsComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,9 @@ import { DetailsComponent } from './components/details/details.component';
     MainModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    UsersService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

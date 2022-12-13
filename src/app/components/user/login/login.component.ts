@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output,EventEmitter } from '@angular/core';
 import { ILoginUser } from 'src/app/interfaces/loginUser';
 import { IUser } from 'src/app/interfaces/user';
 import { UsersService } from 'src/app/services/users.service';
@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  user: IUser | null = null;
+  @Output() user: any  = new EventEmitter <IUser>;
+
+  // user: IUser | null = null;
   err: any;
 
   constructor(private UsersService: UsersService, private router: Router) { }
@@ -21,9 +23,12 @@ export class LoginComponent {
 
     let user = await this.UsersService.login(loginForm);
 
+
+    console.log(user);
+    
     if (user.status == "success") {
+      this.user.emit(user);
       this.router.navigate(['/user/portfolio'])
-      return this.user = user;
     } else {
       setTimeout(() => {
         this.err = null;
