@@ -2,7 +2,7 @@
     <a routerLink="/" class="home"></a>
     <ul class="nav-ul">
         <ng-container *ngIf="user && user.id">
-            <li>Hello <a routerLink="/user/portfolio">{{user.username}}</a></li>
+            <li>Hello <a routerLink="/user/{{user.id}}/profile">{{user.username}}</a></li>
             <li><a routerLink="/">main</a></li>
             <li><a routerLink="/auth/logout">logout</a></li>
         </ng-container>
@@ -12,4 +12,7 @@
         </ng-container>
     </ul>
 </nav>
+<div class="status" *ngIf="user && user.msg">
+   {{user.msg}}
+</div>
 <!-- <router-outlet></router-outlet> -->

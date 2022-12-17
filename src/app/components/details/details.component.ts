@@ -10,7 +10,12 @@ import { ApiService } from "../../services/api.service";
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  coin: any;
+  coin: any | null = null;
+
+  get getCoin(): ICrypto[] {
+    return this.usersService.user!['coins'];
+  }
+  
   constructor(private ApiService: ApiService, private router: ActivatedRoute, private usersService: UsersService) { }
 
   ngOnInit(): void {
@@ -27,18 +32,27 @@ export class DetailsComponent implements OnInit {
 
   }
 
-  onWatchHandler(coin: ICrypto) {
+  onWatchHandler(data: ICrypto) {
     // let uid = ApiService.
-    let paylod = {
-      id: coin.uuid,
-      rank: coin.rank,
-      price: coin.price,
-      name: coin.name,
-      // uid: ApiService.name,
+    // let paylod = {
+    //   id: data.uuid,
+    //   rank: data.rank,
+    //   price: data.price,
+    //   name: data.name,
+    //   userId: this.usersService.user?.id,
 
-    }
-    console.log(coin);
-    // this.usersService.saveCoin(coin)
+    // }
+    this.getCoin.push(data);
+    let uid = this.usersService.user?.id;
+    data['userId'] = uid;
+
+   return this.usersService.saveCoin(this.getCoin,uid).subscribe((res:any) => {
+    console.log(res);
+    
+   });
+
+   
+   
 
 
   }

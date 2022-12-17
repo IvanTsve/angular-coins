@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { IUser } from 'src/app/interfaces/user';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -7,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortfolioComponent implements OnInit {
 
-  constructor() { }
+  user:IUser | null = null;
+
+  constructor(private router: Router, private userService: UsersService, private route: ActivatedRoute,) { }
+
 
   ngOnInit(): void {
-    
+    const me = this;
+    let id = this.route.snapshot.paramMap.get('id');
+    console.log(id);
+    me.user = me.userService.user;
+
+
   }
 
 }

@@ -16,4 +16,5 @@ export interface ICrypto {
     'symbol': number;
     'tier': number;
     'uuid': number;
+    'userId'?: string;
 }

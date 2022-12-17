@@ -4,6 +4,7 @@ import { paths } from "../../environments/environment";
 import { IRegisterUser } from '../interfaces/registerUser';
 import { ICrypto } from '../interfaces/crypto';
 import { IUser } from '../interfaces/user';
+import { INews } from '../interfaces/new';
 
 
 @Injectable({
@@ -28,11 +29,20 @@ export class UsersService {
     return this.http.get(`${paths.database}/users.json`);
   }
 
-  saveCoin(coin: ICrypto) {
-    return this.http.post(`${paths.database}/coins`, coin);
+  saveCoin(coin: any,id:any) {
+    return this.http.patch(`${paths.database}/users/${id}/coins.json`, {...coin});
+  }
+  saveNews(news: any,id:any) {
+    
+    return this.http.patch(`${paths.database}/users/${id}/news/.json`, {...news});
+    // return this.http.patch(`${paths.database}/users/${news.userId}/news.json`, {news});
   }
 
   getProfile(id: any) {
     return this.http.get(`${paths.database}/users/${id}.json`);
+  }
+
+  registrationCheck() {
+    return this.http.get(`${paths.database}/users.json`);
   }
 }

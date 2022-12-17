@@ -26,12 +26,9 @@ export class LoginComponent {
         if (data) {
           let users = Object.entries(data);
           let user = users.filter((x: any) => x[1]['email'] == loginForm?.email && x[1]['password'] == loginForm?.password)[0];
+          let userData: any = {};
           if (user) {
-            // console.log(user);
-            let userData:any = {};
-
             let d: any = user[1];
-  
             userData['id'] = user[0];
             userData['username'] = d['username'];
             userData['news'] = d['news'] ? d['news'] : [];
@@ -39,14 +36,16 @@ export class LoginComponent {
             userData['status'] = 'success';
             userData['msg'] = 'successfully logged in';
             me.UsersService.user = userData;
-            localStorage.setItem('uc',userData['id']);
+            localStorage.setItem('uc', userData['id']);
             me.router.navigate(['/']);
-
-            // me.user = userData;
-            
+            setTimeout(() => {
+              userData['msg'] = null;
+            }, 2000);
           } else {
-            // dd['status'] = 'error';
-            // dd['msg'] = 'No such user';
+
+            userData['status'] = 'error';
+            userData['msg'] = 'whrong email or password';
+            me.err = userData;
           }
         }
         // return me.user;

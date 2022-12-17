@@ -1,5 +1,5 @@
-<div class="form-div" >
-    <form class="form form-login" (ngSubmit)="registerHandler(registerForm.value)" #registerForm="ngForm">
+<div class="form-div"  >
+    <form class="form form-login" style="height: 700px !important;" (ngSubmit)="registerHandler(registerForm.value)" #registerForm="ngForm">
         <h3 class="form-title">Register</h3>
         
         <label for="username">Username</label>
@@ -12,6 +12,14 @@
         <input type="password" placeholder="Password" id="password" ngModel name="password">
         
         <button class="cta">Register</button>
+        <ng-container *ngIf="err">
+            <h1 class="err-title" style="color: red; text-align: center; text-transform: uppercase;">
+                {{err.status}}
+            </h1>
+            <span class="err-msg" style="color: red; text-align: center; display: table; margin: 0 auto; text-transform: uppercase;">
+                {{err.msg}}
+            </span>
+        </ng-container>
     </form>
 
 </div>

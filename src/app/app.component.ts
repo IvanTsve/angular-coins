@@ -26,7 +26,7 @@ export class AppComponent {
           'news': u.news ? u.news : [],
           'coins': u.coins ? u.coins : [],
           'status': 'success',
-          'msg': 'logged',
+          'msg': u.msg ? u.msg : null,
         };
       });
 

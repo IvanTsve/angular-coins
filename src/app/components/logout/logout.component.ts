@@ -15,7 +15,7 @@ export class LogoutComponent {
 
     const me = this;
 
-    localStorage.removeItem('uk');
+    localStorage.removeItem('uc');
     me.UsersService.user = null;
 
     me.router.navigate(['/']);

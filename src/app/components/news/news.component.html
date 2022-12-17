@@ -1,16 +1,22 @@
+<div *ngIf="!news">
+    <h1>No News</h1>
+
+</div>
 <div *ngIf="news" class="container">
     <div class="trend">
         <!-- todo add router link for summary -->
-        <a routerLink="/news/details/{{0}}3498e6f61dc6">
+        <div class="fav" (click)="onWatchHandler(news[0])"></div>
+        <div >
             <img class="trend-img" [src]="trentNews?.banner_image" alt="banner">
             <div class="content">
                 <h1 class="trend-title">{{trentNews?.title}}</h1>
                 <p class="trend-author">By <strong *ngFor="let author of trentNews?.authors">{{author}} </strong></p>
             </div>
-        </a>
+        </div>
     </div>
     <div class="scroll-imgs-container nc">
-        <div class="scroll-img-item" *ngFor="let n of news.slice(1) key let i=index">
+        <div class="scroll-img-item new" *ngFor="let n of news.slice(1) key let i=index">
+            <div class="fav" (click)="onWatchHandler(n)"></div>
             <div class="scroll-img"
                 [style]="'background: url('+n?.banner_image+');background-size: cover; background-repeat: no-repeat;background-position: center;'">
             </div>
