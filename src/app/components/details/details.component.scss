@@ -13,6 +13,10 @@ body {
   padding: 0;
 }
 
+.coin-picture {
+  padding: 4rem;
+}
+
 .coin-picture,
 .coin-details {
   flex: 1;
@@ -36,6 +40,8 @@ body {
   color: white;
   height: 100vh;
   display: flex;
+  width: 65%;
+  margin: 0 auto;
 }
 
 img#coin-picture {

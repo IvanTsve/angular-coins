@@ -28,7 +28,6 @@ export class NewsComponent implements OnInit {
         me.trentNews = value['feed'][0];
       },
       error(err) {
-        console.log(err);
 
       },
     })

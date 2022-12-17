@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ICrypto } from 'src/app/interfaces/crypto';
+import { IUser } from 'src/app/interfaces/user';
 import { UsersService } from 'src/app/services/users.service';
 import { ApiService } from "../../services/api.service";
 
@@ -15,8 +16,11 @@ export class DetailsComponent implements OnInit {
   get getCoin(): ICrypto[] {
     return this.usersService.user!['coins'];
   }
-  
-  constructor(private ApiService: ApiService, private router: ActivatedRoute, private usersService: UsersService) { }
+  get user(): any {
+    return this.usersService.user;
+  }
+
+  constructor(private ApiService: ApiService, private router: ActivatedRoute, private usersService: UsersService, private routerNav: Router) { }
 
   ngOnInit(): void {
     let params: any = this.router.params;
@@ -33,26 +37,23 @@ export class DetailsComponent implements OnInit {
   }
 
   onWatchHandler(data: ICrypto) {
-    // let uid = ApiService.
-    // let paylod = {
-    //   id: data.uuid,
-    //   rank: data.rank,
-    //   price: data.price,
-    //   name: data.name,
-    //   userId: this.usersService.user?.id,
-
-    // }
+    const me = this;
     this.getCoin.push(data);
     let uid = this.usersService.user?.id;
     data['userId'] = uid;
 
-   return this.usersService.saveCoin(this.getCoin,uid).subscribe((res:any) => {
-    console.log(res);
-    
-   });
+    return this.usersService.saveCoin(this.getCoin, uid).subscribe((res: any) => {
+      me.routerNav.navigate(['/']);
+      me.user['msg'] = 'Add new coin to favourite';
+      setTimeout(() => {
+        me.user['msg'] = null;
+      }, 2000);
 
-   
-   
+
+    });
+
+
+
 
 
   }

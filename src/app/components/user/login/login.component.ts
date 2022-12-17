@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ILoginUser } from 'src/app/interfaces/loginUser';
 import { IUser } from 'src/app/interfaces/user';
 import { UsersService } from 'src/app/services/users.service';
@@ -10,12 +10,20 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss', '../../../app.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   user: IUser;
   err: any;
 
   constructor(private UsersService: UsersService, private router: Router) { }
+
+  ngOnInit(): void {
+    let uc = localStorage.getItem('uc');
+    if (uc) {
+      this.router.navigate(['/']);
+      
+    }
+  }
 
 
   loginHandler(loginForm: ILoginUser) {
@@ -25,7 +33,7 @@ export class LoginComponent {
       next(data) {
         if (data) {
           let users = Object.entries(data);
-          let user = users.filter((x: any) => x[1]['email'] == loginForm?.email && x[1]['password'] == loginForm?.password)[0];
+          let user = users.filter((x: any) => x[1]['email'].toLowerCase() == loginForm?.email.toLowerCase() && x[1]['password'] == loginForm?.password)[0];
           let userData: any = {};
           if (user) {
             let d: any = user[1];

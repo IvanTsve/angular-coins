@@ -1,4 +1,42 @@
-<p>{{user}}</p>
-<!-- todo add btn for favourites in main and post fav coin and news 
-and llist them here
--->
+<main>
+    <div *ngIf="user['news'].length <= 0 && user['coins'].length <= 0" style="width: 100%; margin: 0 auto;">
+        <h1 style="text-align: end;">LIST IS EMPTY</h1>
+    </div>
+    <div class="news">
+        <div class="card-reverse" *ngFor="let n of user['news']  key let i=index">
+            <img src="{{n['banner_image']}}" alt="">
+            <section>
+                <h3>{{n['title']}}</h3>
+                <h4>Topics</h4>
+                <ul>
+                    <li *ngFor="let topic of n['topics'] key let j = index"> {{topic.topic}}</li>
+                </ul>
+                <p>{{n['summary']}}</p>
+            </section>
+        </div>
+
+    </div>
+    <div class="coins">
+        <div class="card" *ngFor="let coin of user['coins']  key let i=index">
+            <img src="{{coin['iconUrl']}}"
+                alt="">
+            <section>
+                <h3>{{coin['name']}}</h3>
+                <h4>Tags</h4>
+                <ul>
+                    <li *ngFor="let tag of coin['tags'] key let j = index">{{tag}}</li>
+                </ul>
+                <p>{{coin['price'] | number }}</p>
+                <h5>Additional links</h5>
+                <ul>
+                    <li class="links" *ngFor="let link of coin['links'] key let k = index"><a routerLink="{{link['url']}}">{{link['name']}}</a></li>
+                </ul>
+                <a routerLink="{{coin['websiteUrl']}}">Read more</a>
+            </section>
+        </div>
+
+    </div>
+
+
+
+</main>

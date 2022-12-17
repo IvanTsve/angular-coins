@@ -10,7 +10,10 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class PortfolioComponent implements OnInit {
 
-  user:IUser | null = null;
+  user:IUser;
+  get getUser():any {
+    return this.userService.user;
+  }
 
   constructor(private router: Router, private userService: UsersService, private route: ActivatedRoute,) { }
 
@@ -18,9 +21,7 @@ export class PortfolioComponent implements OnInit {
   ngOnInit(): void {
     const me = this;
     let id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
-    me.user = me.userService.user;
-
+    me.user = me.getUser;
 
   }
 
