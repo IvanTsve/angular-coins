@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { environment,paths } from "../../environments/environment";
-import { ICrypto } from "../interfaces/crypto";
-import { INews } from "../interfaces/new";
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +22,6 @@ export class ApiService {
 
 
   loadNews() {
-    
     return this.HttpClient.get<any>(`${paths.news}${environment.stockNewsKey}`,this.requestOptionsNews);
   }
 
@@ -32,14 +29,12 @@ export class ApiService {
   getCryptoALl() {
     let cryptos = this.HttpClient.get<any>(`${paths.cryptos}`,this.requestOptionsCrypto);
     return cryptos;
-
   }
 
   getSingleCoin(id:string) {
-
     return this.HttpClient.get<any>(`${paths.coin}/${id}`, this.requestOptionsCrypto);
-
   }
+  
 
 }
 

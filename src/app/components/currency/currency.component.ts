@@ -10,7 +10,6 @@ import { Router } from "@angular/router";
 export class CurrencyComponent implements OnInit {
 
   cryptos: ICrypto[] | null = null;
-  // cryptos: any;
 
   watchCoin(id: any) {
     this.router.navigate([`coins/details/${id}`])

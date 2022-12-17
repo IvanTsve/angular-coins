@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,600,800");
+
 * {
   box-sizing: border-box;
   padding-inline-start: 0;
@@ -12,14 +13,24 @@ body {
   padding: 0;
 }
 
-.profile-picture,
-.profile-details {
+.coin-picture,
+.coin-details {
   flex: 1;
   font-size: 16px;
   // font-size: 2.5vw;
 }
 
-.profile-wrapper {
+.cta {
+  font-size: 2rem;
+  margin: 0 auto;
+  display: block;
+  border: none;
+  border-radius: 5px;
+  background: white;
+  padding: 5px 15px;
+}
+
+.coin-wrapper {
 
   background: #05090c;
   color: white;
@@ -27,29 +38,25 @@ body {
   display: flex;
 }
 
-img#profile-picture {
+img#coin-picture {
   width: 100%;
   height: 100%;
   object-fit: cover;
   padding: 100px;
 }
 
-div.profile-details > div {
+div.coin-details>div {
   padding: 0em 1em 1em 1em;
 }
 
-div.profile-details > div > ul {
+div.coin-details>div>ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-div.profile-details > div > ul li {
-  margin: 8px 0;
-  display: block;
-}
 
-div.profile-details > div > ul > li > div:nth-child(1) {
+div.coin-details>div>ul>li>div:nth-child(1) {
   font-weight: 600;
   // font-size: 16px;
   // font-size: 2vw;
@@ -57,7 +64,7 @@ div.profile-details > div > ul > li > div:nth-child(1) {
   display: inline-block;
 }
 
-div.profile-details > div > ul > li > div:nth-child(2) {
+div.coin-details>div>ul>li>div:nth-child(2) {
   // font-size: 16px;
   // font-size: 2vw;
   text-align: left;
@@ -108,7 +115,7 @@ div.profile-details > div > ul > li > div:nth-child(2) {
     background: red;
   }
 
-  .profile-wrapper {
+  .coin-wrapper {
     flex-direction: column;
   }
 
@@ -126,17 +133,17 @@ div.profile-details > div > ul > li > div:nth-child(2) {
     font-size: 7em;
   }
 
-  .profile-details {
+  .coin-details {
     font-size: 5vw;
     min-height: 60vh;
   }
 
-  div.profile-details > div > ul > li > div:nth-child(1),
-  div.profile-details > div > ul > li > div:nth-child(2) {
+  div.coin-details>div>ul>li>div:nth-child(1),
+  div.coin-details>div>ul>li>div:nth-child(2) {
     font-size: 5vw;
   }
 
-  img#profile-picture {
+  img#coin-picture {
     max-height: 40vh;
   }
 }
@@ -145,4 +152,18 @@ div.profile-details > div > ul > li > div:nth-child(2) {
   color: #013864;
   background: #fff;
   box-shadow: 1px 1px 5px #000;
+}
+
+.coin {
+  display: flex;
+  align-items: baseline;
+
+  h1 {
+    margin-right: 10px;
+
+  }
+}
+
+.cta-holder {
+  display: flex;
 }

@@ -1,35 +1,36 @@
-<div class="profile-wrapper" *ngIf="coin">
-    <div class="profile-picture">
-        <img id="profile-picture" [src]="coin.iconUrl">
+<div class="coin-wrapper" *ngIf="coin">
+    <div class="coin-picture">
+        <img id="coin-picture" [src]="coin.iconUrl">
     </div>
-    <div class="profile-details">
+    <div class="coin-details">
         <div>
-            <div class="profile-title">
+            <div class="coin-title">
 
-                <h1 id="profile-name" class="profile-name">{{coin.symbol}}</h1>
+                <h1 id="coin-name" class="coin-name">{{coin.symbol}}</h1>
             </div>
             <div [innerHTML]="coin.description"></div>
             <ul>
-                <li class="profile-number">
-                    <div>Rank</div>
-                    <div id="profile-second-number">{{coin.rank}}</div>
+                <li class="coin coin-number">
+                    <h1>Rank: </h1>
+                    <h2 id="coin-second-number">{{coin.rank}}</h2>
                 </li>
-                <li class="profile-number">
-                    <div>Price</div>
-                    <div id="profile-first-number">{{coin.price | number}}</div>
+                <li class="coin coin-number">
+                    <h1>Price: </h1>
+                    <h2 id="coin-first-number">{{coin.price | number}}</h2>
                 </li>
-                <li class="profile-email">
-                    <div>Symbol</div>
-                    <div id="profile-primary-email">{{coin.symbol}}</div>
+                <li class="coin coin-email">
+                    <h1>Symbol: </h1>
+                    <h2 id="coin-primary-email">{{coin.symbol}}</h2>
                 </li>
             </ul>
-            <h3>Tags</h3>
-            <span *ngFor="let t of coin.tags"><i>{{t}}</i></span>
+            <div class="cta-holder">
+
+                <div class="tags">
+                    <h3>Tags</h3>
+                    <span *ngFor="let t of coin.tags"><i>{{t}}</i></span>
+                </div>
+                <button (click)="onWatchHandler(coin)" class="cta">Watch</button>
+            </div>
         </div>
-    </div>
-</div>
-<div class='contact-action'>
-    <div class='item'>
-        <i class="fa fa-wrench"></i>
     </div>
 </div>

@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { IUser } from 'src/app/interfaces/user';
+import { UsersService } from "../../services/users.service";
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Input() user: any;
 
+  get user() {
+    return this.UsersService.user;
+  }
+  constructor(private UsersService: UsersService) { }
 
-  constructor() { }
 
   
 

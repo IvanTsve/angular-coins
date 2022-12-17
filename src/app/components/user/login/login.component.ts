@@ -1,8 +1,9 @@
-import { Component, Output,EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { ILoginUser } from 'src/app/interfaces/loginUser';
 import { IUser } from 'src/app/interfaces/user';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -11,30 +12,52 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  @Output() user: any  = new EventEmitter <IUser>;
-
-  // user: IUser | null = null;
+  user: IUser;
   err: any;
 
   constructor(private UsersService: UsersService, private router: Router) { }
 
 
-  async loginHandler(loginForm: ILoginUser) {
+  loginHandler(loginForm: ILoginUser) {
+    const me = this;
 
-    let user = await this.UsersService.login(loginForm);
+    return this.UsersService.login().subscribe({
+      next(data) {
+        if (data) {
+          let users = Object.entries(data);
+          let user = users.filter((x: any) => x[1]['email'] == loginForm?.email && x[1]['password'] == loginForm?.password)[0];
+          if (user) {
+            // console.log(user);
+            let userData:any = {};
+
+            let d: any = user[1];
+  
+            userData['id'] = user[0];
+            userData['username'] = d['username'];
+            userData['news'] = d['news'] ? d['news'] : [];
+            userData['coins'] = d['coins'] ? d['coins'] : [];
+            userData['status'] = 'success';
+            userData['msg'] = 'successfully logged in';
+            me.UsersService.user = userData;
+            localStorage.setItem('uc',userData['id']);
+            me.router.navigate(['/']);
+
+            // me.user = userData;
+            
+          } else {
+            // dd['status'] = 'error';
+            // dd['msg'] = 'No such user';
+          }
+        }
+        // return me.user;
+      },
+      error(err) {
+        me.err = err;
+      }
+
+    });
 
 
-    console.log(user);
-    
-    if (user.status == "success") {
-      this.user.emit(user);
-      this.router.navigate(['/user/portfolio'])
-    } else {
-      setTimeout(() => {
-        this.err = null;
-      }, 5000);
-      return this.err = user;
-    }
 
   }
 

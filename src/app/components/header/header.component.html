@@ -1,12 +1,12 @@
 <nav class="navigation">
-    <a routerLink="/main" class="home"></a>
+    <a routerLink="/" class="home"></a>
     <ul class="nav-ul">
-        <ng-container *ngIf="user.id">
+        <ng-container *ngIf="user && user.id">
             <li>Hello <a routerLink="/user/portfolio">{{user.username}}</a></li>
             <li><a routerLink="/">main</a></li>
             <li><a routerLink="/auth/logout">logout</a></li>
         </ng-container>
-        <ng-container *ngIf="!user.id">
+        <ng-container *ngIf="!user">
             <li><a routerLink="/auth/login">Login</a></li>
             <li><a routerLink="/auth/register">register</a></li>
         </ng-container>
