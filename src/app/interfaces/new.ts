@@ -14,4 +14,5 @@ export interface INews {
     'topics': ITopic[];
     'url': string;
     'userId'?: string;
+    
 }

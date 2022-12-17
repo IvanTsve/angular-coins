@@ -45,4 +45,8 @@ export class UsersService {
   registrationCheck() {
     return this.http.get(`${paths.database}/users.json`);
   }
+
+  remove(data:any,id:any,key:any) {
+    return this.http.put(`${paths.database}/users/${key}/${id}.json`,{...data});
+  }
 }
